@@ -50,10 +50,11 @@
                     <h3 class="mb-1">Welcome to Vuexy! 👋</h3>
                     <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-                    <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                    <form id="" class="mb-3" action="/login" method="POST">
+                        {{ csrf_field() }}
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email or Username</label>
-                            <input type="text" class="form-control" id="email" name="email-username"
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
                                 placeholder="Enter your email or username" autofocus />
                         </div>
                         <div class="mb-3 form-password-toggle">
@@ -76,12 +77,13 @@
                                 <label class="form-check-label" for="remember-me"> Remember Me </label>
                             </div>
                         </div>
-                        <button class="btn btn-primary d-grid w-100">Sign in</button>
+                        <button type="submit" class="btn btn-primary d-grid w-100">Sign in</button>
+                        @include('layouts.errors')
                     </form>
 
                     <p class="text-center">
                         <span>New on our platform?</span>
-                        <a href="auth-register-cover.html">
+                        <a href="{{ 'register' }}">
                             <span>Create an account</span>
                         </a>
                     </p>
