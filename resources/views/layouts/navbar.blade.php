@@ -431,7 +431,7 @@ id="layout-navbar">
                 </div>
               </div>
               <div class="flex-grow-1">
-                <span class="fw-medium d-block">John Doe</span>
+                <span class="fw-medium d-block">{{ Auth()->user()->name}}</span>
                 <small class="text-muted">Admin</small>
               </div>
             </div>
@@ -482,7 +482,7 @@ id="layout-navbar">
           <div class="dropdown-divider"></div>
         </li>
         <li>
-          <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+          <a class="dropdown-item" href="{{route('logout')}}" target="_blank">
             <i class="ti ti-logout me-2 ti-sm"></i>
             <span class="align-middle">Log Out</span>
           </a>

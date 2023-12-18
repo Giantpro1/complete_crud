@@ -63,7 +63,7 @@ class AuthController extends Controller
             ]);
         }
         $request->session()->regenerate();
-        return view('index');
+        return redirect()->route('index');
     }
 
     public   function logoutUser(Request $request)
@@ -71,5 +71,9 @@ class AuthController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         return redirect('login');
+    }
+
+    public function profile(){
+        return view('userProfile');
     }
 }

@@ -17,7 +17,7 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('register', 'StoreUsers');
     Route::get('login', 'login')->name('login');
     Route::post('login', '__LoginUSer');
-    Route::get('logout', 'logoutUser')->middleware('auth');
+    Route::get('logout', 'logoutUser')->middleware('auth')->name('logout');
 });
 
 Route::get('/', function () {
@@ -27,4 +27,11 @@ Route::get('/', function () {
 
 Route::get('/index', function () {
     return view('index');
+});
+
+Route::middleware('auth')->group(function(){
+    Route::get('index', function(){
+        return view('index');
+    })->name('index');
+    Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
 });
