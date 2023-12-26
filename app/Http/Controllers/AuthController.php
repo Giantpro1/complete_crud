@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -15,6 +15,12 @@ class AuthController extends Controller
     {
         return view('Auth/register');
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     public function StoreUsers()
     {
@@ -73,7 +79,52 @@ class AuthController extends Controller
         return redirect('login');
     }
 
-    public function profile(){
+    public function profile()
+    {
         return view('userProfile');
+    }
+    public function userProfileSetting()
+    {
+        return view('updateUserData');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+
+        $request->validate([
+            'organisation' => 'nullable|string',
+            'telphone' => 'nullable|string',
+            'address' => 'nullable|string',
+            'state' => 'nullable|string',
+            'zipcode' => 'nullable|string',
+            'country' => 'nullable|string',
+            'language' => 'nullable|string',
+            'timezone' => 'nullable|string',
+            'profilepic' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $user->organisation = $request->input('organisation');
+        $user->telphone = $request->input('telphone');
+        $user->address = $request->input('address');
+        $user->state = $request->input('state');
+        $user->zipcode = $request->input('zipcode');
+        $user->country = $request->input('country');
+        $user->language = $request->input('language');
+        $user->timezone = $request->input('timezone');
+
+        if ($request->hasFile('profilepic')) {
+            if ($user->profilepic) {
+                // You may uncomment the line below to delete the previous profile picture
+                Storage::delete($user->profilepic);
+            }
+
+            $profilepicPath = $request->file('profilepic')->store('profilepics', 'public');
+            $user->profilepic = $profilepicPath;
+        }
+
+        $user->save();
+
+        return redirect()->route('profile')->with('success', 'Profile updated successfully!');
     }
 }

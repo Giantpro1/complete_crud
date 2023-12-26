@@ -34,4 +34,6 @@ Route::middleware('auth')->group(function(){
         return view('index');
     })->name('index');
     Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
+    Route::get('/userProfileSetting', [App\Http\Controllers\AuthController::class, 'userProfileSetting'])->name('userProfileSetting');
+    Route::put('/userProfileSetting/update', [App\Http\Controllers\AuthController::class, 'updateProfile'])->name('profile.update');
 });

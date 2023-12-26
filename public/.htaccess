@@ -19,3 +19,9 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+# public/.htaccess
+
+<Files "*">
+    Order Deny,Allow
+    Deny from all
+</Files>

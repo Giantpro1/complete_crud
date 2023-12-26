@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'User Profile')
 @section('contents')
 
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -31,7 +31,7 @@
                     </li>
                     <li class="list-inline-item d-flex gap-1"><i class="ti ti-map-pin"></i> Vatican City</li>
                     <li class="list-inline-item d-flex gap-1">
-                      <i class="ti ti-calendar"></i> Joined April 2021
+                      <i class="ti ti-calendar"></i> Joined {{auth()->user()->created_at}}
                     </li>
                   </ul>
                 </div>
@@ -85,7 +85,7 @@
             <ul class="list-unstyled mb-4 mt-3">
               <li class="d-flex align-items-center mb-3">
                 <i class="ti ti-user text-heading"></i
-                ><span class="fw-medium mx-2 text-heading">Full Name:</span> <span>John Doe</span>
+                ><span class="fw-medium mx-2 text-heading">Full Name:</span> <span>{{auth()->user()->name}}</span>
               </li>
               <li class="d-flex align-items-center mb-3">
                 <i class="ti ti-check text-heading"></i
@@ -116,7 +116,7 @@
               </li>
               <li class="d-flex align-items-center mb-3">
                 <i class="ti ti-mail"></i><span class="fw-medium mx-2 text-heading">Email:</span>
-                <span>john.doe@example.com</span>
+                <span>{{auth()->user()->email}}</span>
               </li>
             </ul>
             <small class="card-text text-uppercase">Teams</small>
