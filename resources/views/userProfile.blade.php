@@ -27,11 +27,11 @@
                   <ul
                     class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                     <li class="list-inline-item d-flex gap-1">
-                      <i class="ti ti-color-swatch"></i> UX Designer
+                      <i class="ti ti-color-swatch"></i> {{auth()->user()->role}}
                     </li>
-                    <li class="list-inline-item d-flex gap-1"><i class="ti ti-map-pin"></i> Vatican City</li>
+                    <li class="list-inline-item d-flex gap-1"><i class="ti ti-map-pin"></i> {{auth()->user()->state}}</li>
                     <li class="list-inline-item d-flex gap-1">
-                      <i class="ti ti-calendar"></i> Joined {{auth()->user()->created_at}}
+                      <i class="ti ti-calendar"></i>Joined on: {{ auth()->user()->created_at->format('d, M Y') }}
                     </li>
                   </ul>
                 </div>
@@ -89,26 +89,26 @@
               </li>
               <li class="d-flex align-items-center mb-3">
                 <i class="ti ti-check text-heading"></i
-                ><span class="fw-medium mx-2 text-heading">Status:</span> <span>Active</span>
+                ><span class="fw-medium mx-2 text-heading">Status:</span> <span>{{auth()->user()->status}}</span>
               </li>
               <li class="d-flex align-items-center mb-3">
                 <i class="ti ti-crown text-heading"></i
-                ><span class="fw-medium mx-2 text-heading">Role:</span> <span>Developer</span>
+                ><span class="fw-medium mx-2 text-heading">Role:</span> <span>{{auth()->user()->role}}</span>
               </li>
               <li class="d-flex align-items-center mb-3">
                 <i class="ti ti-flag text-heading"></i
-                ><span class="fw-medium mx-2 text-heading">Country:</span> <span>USA</span>
+                ><span class="fw-medium mx-2 text-heading">Country:</span> <span>{{auth()->user()->country}}</span>
               </li>
               <li class="d-flex align-items-center mb-3">
                 <i class="ti ti-file-description text-heading"></i
-                ><span class="fw-medium mx-2 text-heading">Languages:</span> <span>English</span>
+                ><span class="fw-medium mx-2 text-heading">Languages:</span> <span>{{auth()->user()->language}}</span>
               </li>
             </ul>
             <small class="card-text text-uppercase">Contacts</small>
             <ul class="list-unstyled mb-4 mt-3">
               <li class="d-flex align-items-center mb-3">
                 <i class="ti ti-phone-call"></i><span class="fw-medium mx-2 text-heading">Contact:</span>
-                <span>(123) 456-7890</span>
+                <span>{{ formatPhoneNumber(auth()->user()->telphone) }}</span>
               </li>
               <li class="d-flex align-items-center mb-3">
                 <i class="ti ti-brand-skype"></i><span class="fw-medium mx-2 text-heading">Skype:</span>
@@ -547,3 +547,10 @@
   </div>
 
 @endsection
+@php
+    function formatPhoneNumber($phoneNumber) {
+        // Assuming the phone number is 10 digits
+        $formattedNumber = '+1 (US) ' . substr($phoneNumber, 0, 3) . '-' . substr($phoneNumber, 3, 3) . '-' . substr($phoneNumber, 6);
+        return $formattedNumber;
+    }
+@endphp

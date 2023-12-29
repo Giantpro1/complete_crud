@@ -16,10 +16,10 @@ class AuthController extends Controller
         return view('Auth/register');
     }
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
 
     public function StoreUsers()
@@ -72,7 +72,7 @@ class AuthController extends Controller
         return redirect()->route('index');
     }
 
-    public   function logoutUser(Request $request)
+    public function logoutUser(Request $request)
     {
         Auth::guard('web')->logout();
         $request->session()->invalidate();
@@ -85,7 +85,50 @@ class AuthController extends Controller
     }
     public function userProfileSetting()
     {
-        return view('updateUserData');
+        $languages = [
+            'English', 'French', 'German', 'Portuguese',
+        ];
+
+        // $currencies = [
+        //     'USD', 'Euro', 'Pound', 'Bitcoin',
+        // ];
+
+        $timezones = [
+            '(GMT-12:00) International Date Line West',
+            '(GMT-11:00) Midway Island, Samoa',
+            '(GMT-10:00) Hawaii',
+            '(GMT-09:00) Alaska',
+            '(GMT-08:00) Pacific Time (US & Canada)',
+            '(GMT-08:00) Tijuana, Baja California',
+            '(GMT-07:00) Arizona',
+            '(GMT-07:00) Chihuahua, La Paz, Mazatlan',
+            '(GMT-07:00) Mountain Time (US & Canada)',
+            '(GMT-06:00) Central America',
+            '(GMT-06:00) Central Time (US & Canada)',
+            '(GMT-06:00) Guadalajara, Mexico City, Monterrey',
+            '(GMT-06:00) Saskatchewan',
+            '(GMT-05:00) Bogota, Lima, Quito, Rio Branco',
+            '(GMT-05:00) Eastern Time (US & Canada)',
+            '(GMT-05:00) Indiana (East)',
+            '(GMT-04:00) Atlantic Time (Canada)',
+            '(GMT-04:00) Caracas, La Paz',
+            // ... add more time zones as needed
+        ];
+
+        $countries = [
+            'Australia', 'Bangladesh', 'Belarus', 'Brazil', 'Canada', 'China',
+            'France', 'Germany', 'India', 'Indonesia', 'Israel', 'Italy', 'Japan',
+            'Korea, Republic of', 'Mexico', 'Philippines', 'Russian Federation',
+            'South Africa', 'Thailand', 'Turkey', 'Ukraine', 'United Arab Emirates',
+            'United Kingdom', 'United States',
+        ];
+
+        return view('updateUserData',   [
+            'countries' => $countries,
+            'languages' => $languages,
+            'timezones' => $timezones,
+            // 'currencies' => $currencies,
+        ]);
     }
 
     public function updateProfile(Request $request)
