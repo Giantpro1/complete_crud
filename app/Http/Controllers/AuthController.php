@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserActivity;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
@@ -85,7 +86,11 @@ class AuthController extends Controller
     }
     public function userSecuritySetting()
     {
-        return view('userSecuritySetting');
+        $recentDevices = UserActivity::where('userid', auth()->user()->userid)
+        ->orderBy('created_at', 'desc')
+        ->take(5) // Limit to 5 recent devices
+        ->get();
+        return view('userSecuritySetting', ['recentDevices' => $recentDevices]);
     }
     public function userProfileSetting()
     {

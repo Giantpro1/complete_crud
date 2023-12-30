@@ -136,7 +136,7 @@
                 <!--/ Two-steps verification -->
 
                 <!-- Create an API key -->
-                <div class="card mb-4">
+                {{-- <div class="card mb-4">
                     <h5 class="card-header">Create an API key</h5>
                     <div class="row">
                         <div class="col-md-5 order-md-0 order-1">
@@ -176,11 +176,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!--/ Create an API key -->
 
                 <!-- API Key List & Access -->
-                <div class="card mb-4">
+                {{-- <div class="card mb-4">
                     <h5 class="card-header">API Key List & Access</h5>
                     <div class="card-body">
                         <p>
@@ -256,7 +256,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!--/ API Key List & Access -->
 
                 <!-- Recent Devices -->
@@ -273,64 +273,23 @@
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
-                                <tr>
-                                    <td class="text-truncate">
-                                        <i class="ti ti-brand-windows text-info me-2 ti-sm"></i>
-                                        <span class="fw-medium">Chrome on Windows</span>
-                                    </td>
-                                    <td class="text-truncate">HP Spectre 360</td>
-                                    <td class="text-truncate">Switzerland</td>
-                                    <td class="text-truncate">10, July 2021 20:07</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <i class="ti ti-device-mobile text-danger me-2 ti-sm"></i>
-                                        <span class="fw-medium">Chrome on iPhone</span>
-                                    </td>
-                                    <td class="text-truncate">iPhone 12x</td>
-                                    <td class="text-truncate">Australia</td>
-                                    <td class="text-truncate">13, July 2021 10:10</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <i class="ti ti-brand-android text-success me-2 ti-sm"></i>
-                                        <span class="fw-medium">Chrome on Android</span>
-                                    </td>
-                                    <td class="text-truncate">Oneplus 9 Pro</td>
-                                    <td class="text-truncate">Dubai</td>
-                                    <td class="text-truncate">14, July 2021 15:15</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <i class="ti ti-brand-apple me-2 ti-sm"></i>
-                                        <span class="fw-medium">Chrome on MacOS</span>
-                                    </td>
-                                    <td class="text-truncate">Apple iMac</td>
-                                    <td class="text-truncate">India</td>
-                                    <td class="text-truncate">16, July 2021 16:17</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <i class="ti ti-brand-windows text-info me-2 ti-sm"></i>
-                                        <span class="fw-medium">Chrome on Windows</span>
-                                    </td>
-                                    <td class="text-truncate">HP Spectre 360</td>
-                                    <td class="text-truncate">Switzerland</td>
-                                    <td class="text-truncate">20, July 2021 21:01</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-truncate">
-                                        <i class="ti ti-brand-android text-success me-2 ti-sm"></i>
-                                        <span class="fw-medium">Chrome on Android</span>
-                                    </td>
-                                    <td class="text-truncate">Oneplus 9 Pro</td>
-                                    <td class="text-truncate">Dubai</td>
-                                    <td class="text-truncate">21, July 2021 12:22</td>
-                                </tr>
+                                @foreach ($recentDevices as $device)
+                                    <tr>
+                                        <td class="text-truncate">
+                                            {{-- Add icon or indicator based on browser --}}
+                                            <i class="ti ti-brand-windows text-info me-2 ti-sm"></i>
+                                            <span class="fw-medium">{{ $device->browser }}</span>
+                                        </td>
+                                        <td class="text-truncate">{{ $device->device }}</td>
+                                        <td class="text-truncate">{{ $device->location }}</td>
+                                        <td class="text-truncate">{{ $device->created_at->format('j, M Y H:i') }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
+
                 <!--/ Recent Devices -->
             </div>
         </div>
@@ -354,9 +313,9 @@
                         title: 'Success',
                         text: response.message,
                     }).then(() => {
-                    // Reset the form
-                    document.getElementById('formAccountSetting_s').reset();
-                });
+                        // Reset the form
+                        document.getElementById('formAccountSetting_s').reset();
+                    });
                 },
                 error: function(xhr) {
                     // Handle errors
