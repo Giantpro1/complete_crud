@@ -83,6 +83,10 @@ class AuthController extends Controller
     {
         return view('userProfile');
     }
+    public function userSecuritySetting()
+    {
+        return view('userSecuritySetting');
+    }
     public function userProfileSetting()
     {
         $languages = [
@@ -169,5 +173,26 @@ class AuthController extends Controller
         $user->save();
 
         return redirect()->route('profile')->with('success', 'Profile updated successfully!');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'currentPassword' => 'required|string',
+            'newPassword' => 'required|string|min:8|different:currentPassword',
+            'confirmPassword' => 'required|string|same:newPassword',
+        ]);
+
+        $user = auth()->user();
+
+        // Check if the current password matches the user's password
+        if (!Hash::check($request->currentPassword, $user->password)) {
+            return response()->json(['error' => 'Current password is incorrect'], 422);
+        }
+
+        // Update the user's password using Hash::make()
+        $user->update(['password' => Hash::make($request->newPassword)]);
+
+        return response()->json(['message' => 'Password updated successfully']);
     }
 }

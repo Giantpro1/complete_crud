@@ -110,6 +110,7 @@
     <script src="{{asset('assets/vendor/libs/i18n/i18n.js')}}"></script>
     <script src="{{asset('assets/vendor/libs/typeahead-js/typeahead.js')}}"></script>
     <script src="{{asset('assets/vendor/js/menu.js')}}"></script>
+    <script src="{{asset('assets/js/sweetalert.js')}}"></script>
 
     <!-- endbuild -->
 

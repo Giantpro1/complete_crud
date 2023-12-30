@@ -35,5 +35,8 @@ Route::middleware('auth')->group(function(){
     })->name('index');
     Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
     Route::get('/userProfileSetting', [App\Http\Controllers\AuthController::class, 'userProfileSetting'])->name('userProfileSetting');
+    Route::get('/usersecuritysetting', [App\Http\Controllers\AuthController::class, 'userSecuritySetting'])->name('usersecuritysetting');
     Route::put('/userProfileSetting/update', [App\Http\Controllers\AuthController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/update-password', [App\Http\Controllers\AuthController::class, 'updatePassword'])->name('updatePassword');
+
 });

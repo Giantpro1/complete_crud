@@ -17,12 +17,12 @@
                             @if (auth()->user()->profilepic)
                                 {{-- <img src="" alt="Profile Picture"> --}}
                                 <img src="{{ asset('storage/' . auth()->user()->profilepic) }}" alt="user image"
-                                class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img"  width="250"  />
+                                    class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" width="250" />
                             @else
                                 <!-- Default image or placeholder if no profile picture is available -->
                                 {{-- <img src="{{ asset('path-to-default-image.jpg') }}" alt="Default Profile Picture"> --}}
                                 <img src="{{ asset('../../assets/img/avatars/14.png') }}" alt="user image"
-                                class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" />
+                                    class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" />
                             @endif
                             {{-- <img src="../../assets/img/avatars/14.png" alt="user image"
                                 class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" /> --}}
@@ -61,19 +61,14 @@
             <div class="col-md-12">
                 <ul class="nav nav-pills flex-column flex-sm-row mb-4">
                     <li class="nav-item">
-                        <a class="nav-link active" href="javascript:void(0);"><i class="ti-xs ti ti-user-check me-1"></i>
-                            Profile</a>
+                        <a class="nav-link{{ request()->is('userProfileSetting') ? ' active' : '' }}" href="{{ route('userProfileSetting') }}">
+                            <i class="ti-xs ti ti-users me-1"></i> Account
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages-profile-teams.html"><i class="ti-xs ti ti-users me-1"></i> Teams</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages-profile-projects.html"><i class="ti-xs ti ti-layout-grid me-1"></i>
-                            Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages-profile-connections.html"><i class="ti-xs ti ti-link me-1"></i>
-                            Connections</a>
+                        <a class="nav-link{{ request()->is('usersecuritysetting') ? ' active' : '' }}" href="{{ route('usersecuritysetting') }}">
+                            <i class="ti-xs ti ti-lock me-1"></i> Security
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -99,7 +94,8 @@
                             </li>
                             <li class="d-flex align-items-center mb-3">
                                 <i class="ti ti-crown text-heading"></i><span
-                                    class="fw-medium mx-2 text-heading">Role:</span> <span>{{ auth()->user()->role }}</span>
+                                    class="fw-medium mx-2 text-heading">Role:</span>
+                                <span>{{ auth()->user()->role }}</span>
                             </li>
                             <li class="d-flex align-items-center mb-3">
                                 <i class="ti ti-flag text-heading"></i><span
