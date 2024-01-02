@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/demo.css')}}" />
 
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/node-waves/node-waves.css')}}" />
+
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/typeahead-js/typeahead.css')}}" />
@@ -41,6 +42,13 @@
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/vendor/libs/dropzone/dropzone.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/vendor/libs/flatpickr/flatpickr.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/vendor/libs/tagify/tagify.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/vendor/libs/quill/katex.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/vendor/libs/quill/editor.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/vendor/libs/select2/select2.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/vendor/libs/quill/typography.css')}}" />
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="{{asset('assets/vendor/css/pages/cards-advance.css')}}" />
@@ -112,20 +120,28 @@
     <script src="{{asset('assets/vendor/js/menu.js')}}"></script>
     <script src="{{asset('assets/js/sweetalert.js')}}"></script>
     <script src="{{asset('assets/js/app-ecommerce-dashboard.js')}}"></script>
-    {{-- <script src="{{asset('assets/vendor/libs/apex-charts/apexcharts.js')}}"></script> --}}
+    <script src="{{asset('assets/js/app-ecommerce-product-add.js')}}"></script>
+    <script src="{{asset('assets/vendor/libs/dropzone/dropzone.js')}}"></script>
 
     <!-- endbuild -->
 
     <!-- Vendors JS -->
     <script src="{{asset('assets/vendor/libs/apex-charts/apexcharts.js')}}"></script>
+    <script src="{{asset('assets/vendor/libs/quill/katex.js')}}"></script>
+    <script src="{{asset('assets/vendor/libs/quill/quill.js')}}"></script>
+    <script src="{{asset('assets/vendor/libs/select2/select2.js')}}"></script>
+    <script src="{{asset('assets/vendor/libs/jquery-repeater/jquery-repeater.js')}}"></script>
     <script src="{{asset('assets/vendor/libs/swiper/swiper.js')}}"></script>
     <script src="{{asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js')}}"></script>
-
+    <script src="{{asset('assets/vendor/libs/flatpickr/flatpickr.js')}}"></script>
+    <script src="{{asset('assets/vendor/libs/tagify/tagify.js')}}"></script>
+    <script src="{{('assets/js/app-ecommerce-category-list.js')}}"></script>
+    <script src="{{('assets/vendor/libs/moment/moment.js')}}"></script>
     <!-- Main JS -->
     <script src="{{asset('assets/js/main.js')}}"></script>
 
     <!-- Page JS -->
-    <script src="{{ asset('assets/js/dashboards-analytics.js')}}"></script>
+    {{-- <script src="{{ asset('assets/js/dashboards-analytics.js')}}"></script> --}}
 
 
 </body>

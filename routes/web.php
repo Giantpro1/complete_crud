@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProductCategory;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,9 +27,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/index', function () {
-    return view('index');
-});
+// Route::get('/index', function () {
+//     return view('index');
+// });
 
 Route::middleware('auth')->group(function(){
     Route::get('index', function(){
@@ -38,5 +40,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/usersecuritysetting', [App\Http\Controllers\AuthController::class, 'userSecuritySetting'])->name('usersecuritysetting');
     Route::put('/userProfileSetting/update', [App\Http\Controllers\AuthController::class, 'updateProfile'])->name('profile.update');
     Route::post('/update-password', [App\Http\Controllers\AuthController::class, 'updatePassword'])->name('updatePassword');
-
+    Route::get('/productlist', [ProductController::class, 'productList']);
+    Route::get('/addproduct', [ProductController::class, 'addProducts']);
+    Route::get('/categorylist', [ProductCategory::class, 'productCategory'])->name('productCategory');
+    Route::post('/submit-category', [ProductCategory::class, 'submitCategory'])->name('submitCategory');
 });
+

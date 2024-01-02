@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="{{route('index')}}" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -29,7 +29,7 @@
     <ul class="menu-inner py-1">
         <!-- Dashboards -->
         <li class="menu-item active open">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="{{route('index')}}" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-shopping-cart"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
                 <div class="badge bg-primary rounded-pill ms-auto">3</div>
@@ -41,17 +41,17 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="app-ecommerce-product-list.html" class="menu-link">
+                            <a href="{{'productlist'}}" class="menu-link">
                                 <div data-i18n="Product list">Product list</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="app-ecommerce-product-add.html" class="menu-link">
+                            <a href="{{'addproduct'}}" class="menu-link">
                                 <div data-i18n="Add Product">Add Product</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="app-ecommerce-category-list.html" class="menu-link">
+                            <a href="{{'categorylist'}}" class="menu-link">
                                 <div data-i18n="Category list">Category List</div>
                             </a>
                         </li>
